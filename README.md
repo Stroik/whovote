@@ -1,2 +1,2 @@
 # whovote
-Hybrid App build it with Ionic Framework
+Hybrid App built it with Ionic Framework
