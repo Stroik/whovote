@@ -47,15 +47,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  .state('tab.dash-details', {
-    url: '/dash/:slug',
-    views: {
-      'tab.dash':{
-        templateUrl: 'templates/tab-dash-post.html',
-        controller: 'DashidCtrl'
+  .state('tab.dash-post', {
+      url: '/dash/:postSlug',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/tab-dash-post.html',
+          controller: 'DashidCtrl'
+        }
       }
-    }
-  })
+    })
 
   .state('tab.chats', {
       url: '/chats',

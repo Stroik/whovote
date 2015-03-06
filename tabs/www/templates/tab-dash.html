@@ -1,11 +1,15 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <div class="list">
-        <a class="item item-thumbnail-left" ng-repeat="info in $storage.posts" href="#/tab/dash/{{info.slug}}">
-          <img src="{{info.thumbnail}}">
-          <h2>{{info.title}}</h2>
-          <p ng-bind-html="info.excerpt"></p>
-        </a>
-    </div>
+<ion-view view-title="Catálogo">
+  <ion-content>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="info in $storage.posts" type="item-text-wrap" href="#/tab/dash/{{info.slug}}">
+        <img ng-src="{{info.thumbnail}}">
+        <h2>{{info.title}}</h2>
+        <p ng-bind-html="info.excerpt"></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>    
   </ion-content>
 </ion-view>

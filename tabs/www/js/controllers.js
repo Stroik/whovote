@@ -1,20 +1,49 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http, $localStorage, $stateParams) {
-
+.controller('DashCtrl', function($scope, $http, $localStorage, $stateParams, $ionicLoading) {
 	$scope.$storage = $localStorage;
-	$http.get('http://www.noasa.com.ar/api/get_posts').success(function(data){
+	$ionicLoading.show({
+      template: 'Cargando...'
+    });
+	$http.get('http://www.noasa.com.ar/api/get_posts/?post_type=product').success(function(data){
+		if(!data){
+			$ionicLoading.show({
+		      template: 'Sin conexión',
+		      content: 'loading'
+		    });	
+		}
+		else{
+		$ionicLoading.hide();
 		$localStorage.posts = $scope.posts = data.posts;
 		console.log(data.posts);
+		}
+	}).error(function(err){
+		$ionicLoading.show({
+		      template: 'Sin conexión',
+		      content: 'loading'
+		});
 	});
+
+	
 })
 
-.controller('DashidCtrl', function($scope, $http, $localStorage, $stateParams){
+.controller('DashidCtrl', function($scope, $http, $localStorage, $stateParams, $ionicLoading){
 	$scope.$storage = $localStorage;
-	$http.get('http://www.noasa.com.ar/api/get_post/?slug='+$stateParams.slug).success(function(data){
-		$scope.dash = data;
-		console.log(data);
-	});		
+	$ionicLoading.show({
+      template: 'Cargando...',
+      content: 'loading'
+    });
+
+	$http.get('http://www.noasa.com.ar/api/get_post/?post_type=product&slug='+ $stateParams.postSlug).success(function(data){
+		$ionicLoading.hide();
+		$localStorage.post = $scope.post = data.post;
+		console.log(data.post);
+	}).error(function(err){
+		$ionicLoading.show({
+	      template: 'Sin conexión',
+	      content: 'loading'
+	    });
+	});
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
