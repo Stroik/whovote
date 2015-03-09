@@ -1,0 +1,30 @@
+<ion-view view-title="Catálogo">
+  <ion-content>
+      <ion-slide-box active-slide="myActiveSlide" delegate-handle="image-viewer" on-slide-changed="slideChanged(index)" auto-play="true" does-continue="true">
+
+        <ion-slide ng-repeat="image in posts">
+        <div class="row mybox">
+          <div class="col">
+            <img src="{{image.thumbnail}}" title="{{image.title_plain}}"/>
+          </div>
+          <div class="col">
+            <h3 ng-bind-html="image.title"></h3>
+            <p ng-bind-html="image.excerpt"></p>
+          </div>
+        </div>
+        </ion-slide>
+
+      </ion-slide-box>
+    <ion-list> 
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="info in $storage.posts" type="item-text-wrap" href="#/tab/dash/{{info.slug}}">
+        <img ng-src="{{info.thumbnail}}">
+        <h2 ng-bind-html="info.title"></h2>
+        <p ng-bind-html="info.excerpt"></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-positive">Agregar</ion-option-button>
+        <ion-option-button class="button-assertive">Detalles</ion-option-button>
+
+      </ion-item>
+    </ion-list>    
+  </ion-content>
+</ion-view>

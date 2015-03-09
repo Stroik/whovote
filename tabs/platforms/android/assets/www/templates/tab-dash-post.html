@@ -1,0 +1,37 @@
+<ion-view view-title="{{$storage.post.title_plain}}">
+  <ion-content class="padding">
+    <div class="list card">
+  
+      <div class="item item-avatar">
+        <img src="{{$storage.post.thumbnail}}">
+        <h2>{{$storage.post.title_plain}}</h2>
+        <p>{{$storage.post.date}}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="{{$storage.post.thumbnail}}">
+        <p ng-bind-html="$storage.post.content"></p>
+        <p>
+          <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">{{$storage.post.comment_count}} Comments</a>
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Like
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comentarios
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-share"></i>
+          Share
+        </a>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>
