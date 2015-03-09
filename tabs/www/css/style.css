@@ -1,1 +1,18 @@
 /* Empty. Add your own CSS if you like */
+
+.mybox{
+	width: 100%;
+}
+.mybox h3{
+ font-size:1em;
+ float: right;
+ font-weight: 500;
+}
+.mybox p{
+	padding:0px;
+	font-size: .8em;
+	text-align: justify;
+}
+.mybox img{
+	float: left;
+}

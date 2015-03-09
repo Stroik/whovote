@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http, $localStorage, $stateParams, $ionicLoading) {
+.controller('DashCtrl', function($scope, $http, $localStorage, $stateParams, $ionicLoading, $ionicSlideBoxDelegate) {
 	$scope.$storage = $localStorage;
 	$ionicLoading.show({
       template: 'Cargando...'
@@ -13,9 +13,10 @@ angular.module('starter.controllers', [])
 		    });	
 		}
 		else{
-		$ionicLoading.hide();
-		$localStorage.posts = $scope.posts = data.posts;
-		console.log(data.posts);
+			$ionicLoading.hide();
+			$localStorage.posts = $scope.posts = data.posts;
+			$ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
+			console.log(data.posts);
 		}
 	}).error(function(err){
 		$ionicLoading.show({
@@ -23,7 +24,7 @@ angular.module('starter.controllers', [])
 		      content: 'loading'
 		});
 	});
-
+	$scope.myActiveSlide = 1;
 	
 })
 
